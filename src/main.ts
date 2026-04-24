@@ -10,6 +10,7 @@ import landUseImage from './assets/land use.png'
 import mrdemImage from './assets/mrdem.png'
 
 const toAnchorId = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+const arcgisEmbedScriptSrc = 'https://js.arcgis.com/5.0/embeddable-components/'
 
 const navItems = [
   { label: 'Abstract', targetId: 'abstract' },
@@ -441,6 +442,13 @@ const sources = [
 
 const app = document.querySelector<HTMLDivElement>('#app')
 
+if (!document.querySelector(`script[src="${arcgisEmbedScriptSrc}"]`)) {
+  const arcgisScript = document.createElement('script')
+  arcgisScript.type = 'module'
+  arcgisScript.src = arcgisEmbedScriptSrc
+  document.head.appendChild(arcgisScript)
+}
+
 if (app) {
   app.innerHTML = `
     <div class="site-shell">
@@ -790,8 +798,16 @@ if (app) {
               Generally, the model selected areas towards the southern part of the province.
             </p>
           </div>
-            <div class="figure-placeholder results-map-placeholder">
-              <span>results map placeholder</span>
+            <div class="results-map-placeholder">
+              <arcgis-embedded-map
+                style="height:600px;width:700px;max-width:100%;"
+                item-id="b0ec6735f2fb44de9ddb04ea8b2da67c"
+                theme="light"
+                time-zone-label-enabled
+                center="-104.74258956061414,53.05958518219305"
+                scale="9244648.868618"
+                portal-url="https://ubc.maps.arcgis.com"
+              ></arcgis-embedded-map>
             </div>
 
             <div class="prose results-prose">
