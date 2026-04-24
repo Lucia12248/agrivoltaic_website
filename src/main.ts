@@ -547,7 +547,7 @@ if (app) {
             <p>
               Previous literature was also used as a reference for weighing these factors. Furthermore, information
               about the various datasets used for this analysis and how they were obtained is detailed in the data
-              sources page (insert page link here maybe?).
+              sources page.
             </p>
 
             <h4>Data Preparation</h4>
@@ -739,16 +739,85 @@ if (app) {
               Generally, the model selected areas towards the southern part of the province.
             </p>
           </div>
-          <div class="results-map-note">
-            The map summary will sit here with the color-coded model legend once the final image is placed.
-          </div>
+            <div class="figure-placeholder results-map-placeholder">
+              <span>results map placeholder</span>
+            </div>
+
+            <div class="prose results-prose">
+              <h3>Sensitivity Analysis - A comparison of models</h3>
+              <p>
+                Though there is some overlap, changing the weights significantly changed the selected areas. The
+                overlapping areas, however, are both already quite near transmission lines. This is highly likely due
+                to the assigned weighting for our model. To recap, we assigned weights of 67.16% to proximity to
+                transmission lines, 26.54% to slope, and 6.29% to photovoltaic potential for the weighted model. In
+                simpler terms, the weighted model highly values having agrivoltaic farms near existing power
+                infrastructure.
+              </p>
+              <p>
+                This highlights that the selection of suitable areas for agrivoltaics highly depends on what the
+                interested parties value. As mentioned in the methodology section, our weighting and selected factors
+                are essentially based on the insights of experts from Germany. It can be inferred that these experts
+                valued the practicality of construction and implementation over sustainability or climate impacts -
+                higher weights were assigned to variables like proximity to grid connection points, slope, and the
+                German building code, while the lowest weights of 4% each were assigned to solar irradiation and climate
+                water balance (Hauger et al., 2025). Thus, there is a strong possibility that if Canada-based experts or
+                other types of professionals were consulted for this project, the weighting of variables and the
+                subsequently selected areas may be completely different.
+              </p>
+
+              <h3>Least-Cost Pathway</h3>
+              <p>
+                The calculated path is overall relatively straight. The area surrounding the farm consists mostly of
+                cropland and roads, which we assigned the lowest weights to. Thus, the path was able to go straight
+                through for the most part. Upon closer inspection, however, we see that the path avoids the areas we
+                wanted it to. The path snakes through and avoids grasslands, shrublands, bodies of water, and settlements
+                with high vegetation.
+              </p>
+
+              <h3>Data Limitations</h3>
+              <p>
+                We made use of the most up-to-date versions of each dataset we gathered. However, it should be noted
+                that this means that some datasets are from different years. The photovoltaic potential map and land
+                cover datasets, for example, were last updated in 2020, while the annual crop inventory was updated more
+                recently in 2024.
+              </p>
+              <p>
+                There are also a few coverage concerns with our data. The Thematic Soil Maps of Saskatchewan dataset did
+                not cover all of the cropland that we originally planned to include in our analysis. To account for
+                this, we further limited coverage to only include areas for which we had complete data.
+              </p>
+              <p>
+                Lastly, the land use dataset we used for the least-cost pathway calculation did not include much detail
+                when it came to settlements and residential areas. There was more focus placed on nature and types of
+                land cover (i.e., cropland, forests, wetlands). Urban and rural residential, commercial, and industrial
+                infrastructure were all grouped into one variable. Thus, we were unable to fully account for the
+                variation in settlement and infrastructure types.
+              </p>
+            </div>
         </section>
 
         <section class="section-card conclusion-section" id="conclusion">
           <div class="section-heading">
             <h2 id="conclusion-heading">Conclusion</h2>
           </div>
-          <div class="conclusion-box">in conclusion this is win</div>
+          <div class="prose conclusion-prose">
+            <p>
+              This project mapped out the most suitable areas for agrivoltaics deployment in Saskatchewan, Canada.
+              The factors that were considered in this analysis were soil slope, proximity to transmission lines, and
+              photovoltaic potential. We also limited the analysis to only cover existing crop land, areas where
+              shade-tolerant crops were being grown, and where the slope was not too steep. Furthermore, we mapped a
+              least-cost pathway from one of the identified agrivoltaic farms to a nearby substation.
+            </p>
+            <p>
+              Though the MCE analysis provides a limited view of opinions, it does provide a good starting point to
+              understand what areas should be investigated. Future studies can incorporate the inputs of a wider
+              variety of local experts to create a more robust model. Another group that would be important to
+              include in a Canadian context, for example, is Indigenous communities. This could mean that future
+              models may consider including more suitability criteria and likely have different weights assigned to
+              each factor. Lastly, future research could build on this analysis by looking into finding new areas to
+              start farms and implement agrivoltaics rather than simply focusing on current agricultural areas.
+            </p>
+          </div>
         </section>
 
         <section class="section-card sources-section" id="sources">
