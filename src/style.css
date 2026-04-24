@@ -27,7 +27,8 @@ body {
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 0.1em;
 }
 
 p,
@@ -85,6 +86,11 @@ h3 {
   padding: 0.25rem 0.5rem 1rem;
 }
 
+.section-divider-top {
+  border-top: 0.5px solid var(--line);
+  padding-top: 0.7rem;
+}
+
 .team-section {
   border: 2px solid #000000;
   padding: 0.5rem 0.6rem 1rem;
@@ -106,6 +112,7 @@ h3 {
 
 #introduction .section-heading,
 #datasets .section-heading,
+#abstract .section-heading,
 #methodology .section-heading {
   border-top: 0;
 }
@@ -118,18 +125,15 @@ h3 {
 .hero-scene {
   position: relative;
   height: clamp(220px, 38vh, 340px);
-  background: var(--hero-gray);
+  background: center center / cover no-repeat var(--hero-gray);
   overflow: hidden;
 }
 
-.hero-scene::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 48%;
-  background: var(--hero-field);
+.figure-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-caption-wrap {
@@ -141,6 +145,8 @@ h3 {
 }
 
 .hero-caption-wrap h1 {
+  display: inline-block;
+  width: fit-content;
   max-width: 14ch;
   color: #f7f5f0;
 }
@@ -223,6 +229,14 @@ h3 {
   min-height: 220px;
 }
 
+.dataset-image {
+  overflow: hidden;
+}
+
+.dataset-image .figure-image {
+  min-height: 110px;
+}
+
 .dataset-list {
   display: grid;
   gap: 1rem;
@@ -259,11 +273,24 @@ h3 {
 .dataset-text {
   display: grid;
   gap: 0.6rem;
-  padding-top: 0.1rem;
   background: #d6ead3;
   border: 1px solid #2a4725;
-  padding: 0.7rem 0.8rem;
-  align-self: stretch;
+  padding: 0.45rem 0.5rem;
+  width: fit-content;
+  max-width: 100%;
+  justify-self: center;
+  align-self: center;
+}
+
+.dataset-row-focus {
+  align-items: center;
+}
+
+.dataset-text-fit {
+  width: fit-content;
+  max-width: 100%;
+  justify-self: center;
+  align-self: center;
 }
 
 .dataset-label {
@@ -280,8 +307,18 @@ h3 {
 }
 
 .dataset-summary {
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
   border-left: 2px solid #2a4725;
   padding-left: 0.6rem;
+}
+
+.dataset-source {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  text-indent: 0;
 }
 
 .dataset-filler,
@@ -302,6 +339,83 @@ h3 {
 .methodology-box {
   font-size: 1.15rem;
   font-weight: 700;
+}
+
+.methodology-content {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.25rem 0.5rem;
+  text-align: left;
+}
+
+.methodology-content h3,
+.methodology-content h4 {
+  text-align: left;
+}
+
+.methodology-content h3 {
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1.5px solid rgba(17, 17, 17, 0.45);
+}
+
+.methodology-content h4 {
+  font-size: 1.08rem;
+  margin-top: 0.2rem;
+  width: fit-content;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.methodology-content h4 + p {
+  margin-top: -0.2rem;
+}
+
+.methodology-content p {
+  line-height: 1.55;
+  text-indent: 1.5rem;
+}
+
+.methodology-intro {
+  text-indent: 0;
+}
+
+.methodology-phases,
+.methodology-factors {
+  margin: 0;
+  padding-left: 1.5rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.methodology-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.4rem;
+}
+
+.methodology-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.methodology-table th,
+.methodology-table td {
+  padding: 0.6rem 0.75rem;
+  border: 1.5px solid rgba(17, 17, 17, 0.45);
+  text-align: left;
+}
+
+.methodology-table th {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.methodology-table-caption {
+  margin-top: 0.08rem;
+  font-style: italic;
+  text-indent: 0;
 }
 
 .results-box,
@@ -357,6 +471,16 @@ h3 {
 .sources-list {
   display: grid;
   gap: 1.1rem;
+}
+
+.source-item {
+  margin: 0;
+  max-width: 92ch;
+  padding-left: 1.5rem;
+  text-indent: -1.5rem;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 .toc {
