@@ -458,20 +458,22 @@ if (app) {
                 (item) =>
                   item.children?.length
                     ? `
-                      <details class="toc-group">
-                        <summary class="toc-group-summary">${item.label}</summary>
-                        <div class="toc-sub-links">
-                          <button type="button" class="toc-link" data-target="${item.targetId}">${item.label} Overview</button>
-                          ${item.children
-                            .map(
-                              (child) =>
-                                `<button type="button" class="toc-link toc-sublink" data-target="${child.targetId}">${child.label}</button>`,
-                            )
-                            .join('')}
-                        </div>
-                      </details>
+                      <div class="toc-main-item">
+                        <details class="toc-group">
+                          <summary class="toc-group-summary">${item.label}</summary>
+                          <div class="toc-sub-links">
+                            <button type="button" class="toc-link" data-target="${item.targetId}">${item.label} Overview</button>
+                            ${item.children
+                              .map(
+                                (child) =>
+                                  `<button type="button" class="toc-link toc-sublink" data-target="${child.targetId}">${child.label}</button>`,
+                              )
+                              .join('')}
+                          </div>
+                        </details>
+                      </div>
                     `
-                    : `<button type="button" class="toc-link" data-target="${item.targetId}">${item.label}</button>`,
+                    : `<div class="toc-main-item"><button type="button" class="toc-link toc-main-link" data-target="${item.targetId}">${item.label}</button></div>`,
               )
               .join('')}
           </nav>
