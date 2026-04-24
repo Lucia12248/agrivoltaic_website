@@ -800,9 +800,13 @@ if (app) {
           </div>
             <div class="results-map-placeholder">
               <arcgis-embedded-map
-                style="height:600px;width:700px;max-width:100%;"
+                style="height:600px;width:700px;"
                 item-id="b0ec6735f2fb44de9ddb04ea8b2da67c"
                 theme="light"
+                heading-enabled
+                legend-enabled
+                information-enabled
+                share-enabled
                 time-zone-label-enabled
                 center="-104.74258956061414,53.05958518219305"
                 scale="9244648.868618"
