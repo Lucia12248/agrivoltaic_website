@@ -236,6 +236,7 @@ h3 {
 
 .dataset-image .figure-image {
   min-height: 110px;
+  border: 0;
 }
 
 .dataset-list {
@@ -394,12 +395,46 @@ h3 {
 .methodology-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 0.4rem;
+  margin-top: 0;
 }
 
 .methodology-table-wrap {
   width: 100%;
   overflow-x: auto;
+}
+
+.methodology-table-toggle {
+  margin-top: 0.35rem;
+}
+
+.methodology-table-toggle summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgba(42, 71, 37, 0.65);
+  background: rgba(214, 234, 211, 0.65);
+  font-weight: 700;
+  list-style: none;
+}
+
+.methodology-table-toggle summary::before {
+  content: '▸';
+  flex: 0 0 auto;
+  transition: transform 180ms ease;
+}
+
+.methodology-table-toggle summary::-webkit-details-marker {
+  display: none;
+}
+
+.methodology-table-toggle[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.methodology-table-toggle[open] summary {
+  margin-bottom: 0.35rem;
 }
 
 .methodology-table th,

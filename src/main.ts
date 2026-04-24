@@ -629,32 +629,33 @@ if (app) {
               scale. This was done through the MSSmall and MSLarge functions. The following weights were then
               calculated for each factor:
             </p>
-            <table class="methodology-table">
-              <thead>
-                <tr>
-                  <th>Suitability criteria</th>
-                  <th>Weight</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Photovoltaic potential</td>
-                  <td>6.29%</td>
-                </tr>
-                <tr>
-                  <td>Slope</td>
-                  <td>26.54%</td>
-                </tr>
-                <tr>
-                  <td>Distance from Transmission Line</td>
-                  <td>67.16%</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="methodology-table-caption">
-              Table 1: Factors selected as suitability criteria for the Multi-Criteria Evaluation and their assigned
-              weights.
-            </p>
+            <details class="methodology-table-toggle">
+              <summary>Table 1: Factors selected as suitability criteria for the Multi-Criteria Evaluation and their assigned weights.</summary>
+              <div class="methodology-table-wrap">
+                <table class="methodology-table">
+                  <thead>
+                    <tr>
+                      <th>Suitability criteria</th>
+                      <th>Weight</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Photovoltaic potential</td>
+                      <td>6.29%</td>
+                    </tr>
+                    <tr>
+                      <td>Slope</td>
+                      <td>26.54%</td>
+                    </tr>
+                    <tr>
+                      <td>Distance from Transmission Line</td>
+                      <td>67.16%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
 
             <h3>Sensitivity Analysis</h3>
             <p>
@@ -684,37 +685,37 @@ if (app) {
               least cost pathway.
             </p>
 
-            <div class="methodology-table-wrap">
-              <table class="methodology-table">
-                <thead>
-                  <tr>
-                    <th>Code</th>
-                    <th>Landuse Class</th>
-                    <th>Definition</th>
-                    <th>Weights</th>
-                    <th>Explanation</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${landUseCostRows
-                    .map(
-                      (row) => `
-                        <tr>
-                          <td>${row.code}</td>
-                          <td>${row.landuseClass}</td>
-                          <td>${row.definition}</td>
-                          <td>${row.weight}</td>
-                          <td>${row.explanation}</td>
-                        </tr>
-                      `,
-                    )
-                    .join('')}
-                </tbody>
-              </table>
-            </div>
-            <p class="methodology-table-caption">
-              Table 2: Land use types and their relative costs. A rationale for each assigned weight is included.
-            </p>
+            <details class="methodology-table-toggle">
+              <summary>Table 2: Land use types and their relative costs. A rationale for each assigned weight is included.</summary>
+              <div class="methodology-table-wrap">
+                <table class="methodology-table">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Landuse Class</th>
+                      <th>Definition</th>
+                      <th>Weights</th>
+                      <th>Explanation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${landUseCostRows
+                      .map(
+                        (row) => `
+                          <tr>
+                            <td>${row.code}</td>
+                            <td>${row.landuseClass}</td>
+                            <td>${row.definition}</td>
+                            <td>${row.weight}</td>
+                            <td>${row.explanation}</td>
+                          </tr>
+                        `,
+                      )
+                      .join('')}
+                  </tbody>
+                </table>
+              </div>
+            </details>
           </div>
         </section>
 
