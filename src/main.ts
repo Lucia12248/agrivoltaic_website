@@ -546,8 +546,7 @@ if (app) {
             </p>
             <p>
               Previous literature was also used as a reference for weighing these factors. Furthermore, information
-              about the various datasets used for this analysis and how they were obtained is detailed in the data
-              sources page.
+              about the various datasets used for this analysis and how they were obtained is detailed in the <a href="#sources-heading">data sources page</a>.
             </p>
 
             <h4>Data Preparation</h4>
@@ -664,8 +663,7 @@ if (app) {
               having different weights would affect the results.
             </p>
             <p>
-              The results of each model were overlaid on each other. The produced map can be found on the results
-              page.
+              The results of each model were overlaid on each other. The produced map can be found on the <a href="#results-heading">results page</a>.
             </p>
 
             <h3>Data Analysis - Least Cost Pathway</h3>
