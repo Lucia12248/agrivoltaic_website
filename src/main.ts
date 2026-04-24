@@ -436,7 +436,7 @@ const sources = [
   'Trommsdorff, M., Kang, J., Reise, C., Schindele, S., Bopp, G., Ehmann, A., ... & Obergfell, T. (2021). Combining food and energy production: Design of an agrivoltaic system applied in arable and vegetable farming in Germany. Renewable and Sustainable Energy Reviews, 140, 110694.',
   'Ward, N., & Lewry, M. (2019). Saskatchewan | History, Population, Map, & Flag. In Encyclopædia Britannica. https://www.britannica.com/place/Saskatchewan',
   'Widmer, J., Christ, B., Grenz, J., & Norgrove, L. (2024). Agrivoltaics, a promising new tool for electricity and food production: A systematic review. Renewable and Sustainable Energy Reviews, 192, 114277.',
-  'Introduction image by Freepik. https://www.freepik.com/',
+  'Images by Freepik. https://www.freepik.com/',
 ]
 
 const app = document.querySelector<HTMLDivElement>('#app')
