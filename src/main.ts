@@ -78,12 +78,6 @@ const datasets = [
   },
 ]
 
-const resultCards = [
-  'Placeholder for the final suitability map or ranked district summary.',
-  'Placeholder for before-and-after or weighted overlay comparisons.',
-  'Placeholder for hectares, percentage, or score distribution statistics.',
-]
-
 const landUseCostRows = [
   {
     code: '21',
@@ -730,11 +724,24 @@ if (app) {
           <div class="section-heading">
             <h2 id="results-heading">Results</h2>
           </div>
-          <div class="results-box">so epic good yes</div>
-          ${resultCards.map((text) => `<div class="results-text">${text}</div>`).join('')}
-          <div class="results-text results-filler">blah blah b landcover brrr</div>
-          <div class="results-text results-filler">blah blah b transmission brrr</div>
-          <div class="results-text results-filler">blah blah b elevation stuff rahhh brrr</div>
+          <div class="prose results-prose">
+            <p>
+              Previous research indicates that Canada’s electrical energy needs can be provided solely by agrivoltaics
+              even if we were to use only 1% of Canada’s land (Jamil et al., 2023). Saskatchewan, our area of focus,
+              has a total area of about 650,000 square kilometers (Ward and Lewry, 2019). Accordingly, our models
+              selected the best 1% of Saskatchewan’s land that would be most suitable for agrivoltaics deployment.
+              More specifically, each model selected a total area of 6500 square kilometers, split into 10 areas each.
+            </p>
+            <p>
+              The following map showcases the 10 most suitable locations as selected by each MCE model. The yellow
+              sections indicate the areas selected by the weighted model. Likewise, the blue sections indicate areas
+              selected by the equal model. Lastly, the red sections are areas that both of the models selected.
+              Generally, the model selected areas towards the southern part of the province.
+            </p>
+          </div>
+          <div class="results-map-note">
+            The map summary will sit here with the color-coded model legend once the final image is placed.
+          </div>
         </section>
 
         <section class="section-card conclusion-section" id="conclusion">
