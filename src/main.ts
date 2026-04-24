@@ -468,9 +468,11 @@ if (app) {
                     ? `
                       <div class="toc-main-item">
                         <details class="toc-group">
-                          <summary class="toc-group-summary">${item.label}</summary>
+                          <summary class="toc-group-summary" data-target="${item.targetId}">
+                            <span class="toc-group-label">${item.label}</span>
+                            <button class="toc-group-toggle" type="button" aria-label="Toggle ${item.label} subtopics"></button>
+                          </summary>
                           <div class="toc-sub-links">
-                            <button type="button" class="toc-link" data-target="${item.targetId}">${item.label} Overview</button>
                             ${item.children
                               .map(
                                 (child) =>
@@ -907,6 +909,7 @@ if (app) {
   const tocButton = document.querySelector<HTMLButtonElement>('.toc-button')
   const tocPanel = document.querySelector<HTMLElement>('.toc-panel')
   const tocBackdrop = document.querySelector<HTMLButtonElement>('.toc-backdrop')
+  const tocGroupSummaries = document.querySelectorAll<HTMLElement>('.toc-group-summary')
   const tocLinks = document.querySelectorAll<HTMLButtonElement>('.toc-link')
 
   const setTocOpen = (isOpen: boolean) => {
@@ -931,6 +934,27 @@ if (app) {
     const targetTop = targetElement.getBoundingClientRect().top + window.scrollY
     window.scrollTo({ top: targetTop, behavior: 'smooth' })
   }
+
+  tocGroupSummaries.forEach((summary) => {
+    summary.addEventListener('click', (event) => {
+      event.preventDefault()
+
+      const parentGroup = summary.closest<HTMLDetailsElement>('.toc-group')
+      if (!parentGroup) return
+
+      const clickedArrow = (event.target as HTMLElement).closest('.toc-group-toggle')
+      if (clickedArrow) {
+        parentGroup.open = !parentGroup.open
+        return
+      }
+
+      const targetId = summary.dataset.target
+      if (!targetId) return
+
+      scrollToHeading(targetId)
+      setTocOpen(false)
+    })
+  })
 
   tocLinks.forEach((link) => {
     link.addEventListener('click', () => {
