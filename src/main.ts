@@ -1,5 +1,6 @@
 import './style.css'
 import heroFarmImage from './assets/solar-cell-farm-power-station-alternative-energy-from-sun-scaled-e1774935900453.jpg'
+import introImage from './assets/photovoltaics-solar-power-station-energy-from-natural.jpg'
 import pvPotentialImage from './assets/pvpotential.png'
 import landCoverImage from './assets/landcover.png'
 import cropTypeImage from './assets/croptype.png'
@@ -8,11 +9,44 @@ import soilMapsImage from './assets/soil maps of sk.png'
 import landUseImage from './assets/land use.png'
 import mrdemImage from './assets/mrdem.png'
 
+const toAnchorId = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+
 const navItems = [
+  { label: 'Abstract', targetId: 'abstract' },
   { label: 'Introduction', targetId: 'introduction-heading' },
-  { label: 'Datasets', targetId: 'datasets-heading' },
-  { label: 'Methodology', targetId: 'methodology-heading' },
-  { label: 'Results', targetId: 'results-heading' },
+  {
+    label: 'Datasets',
+    targetId: 'datasets-heading',
+    children: [
+      { label: 'Photovoltaic Potential', targetId: toAnchorId('Photovoltaic Potential') },
+      { label: 'Land Cover of Canada', targetId: toAnchorId('Land Cover of Canada') },
+      { label: 'Annual Crop Inventory', targetId: toAnchorId('Annual Crop Inventory') },
+      { label: 'Transmission Lines', targetId: toAnchorId('Transmission Lines') },
+      { label: 'Thematic Soil Maps of Saskatchewan', targetId: toAnchorId('Thematic Soil Maps of Saskatchewan') },
+      { label: 'Land Use', targetId: toAnchorId('Land Use') },
+      { label: 'Medium Resolution Digital Elevation Model', targetId: toAnchorId('Medium Resolution Digital Elevation Model') },
+    ],
+  },
+  {
+    label: 'Methodology',
+    targetId: 'methodology-heading',
+    children: [
+      { label: 'Research and Data Preparation', targetId: 'research-and-data-preparation' },
+      { label: 'Data Preparation', targetId: 'data-preparation' },
+      { label: 'Data Analysis - Standard MCE', targetId: 'data-analysis-standard-mce' },
+      { label: 'Sensitivity Analysis', targetId: 'sensitivity-analysis-methodology' },
+      { label: 'Data Analysis - Least Cost Pathway', targetId: 'data-analysis-least-cost-pathway' },
+    ],
+  },
+  {
+    label: 'Results',
+    targetId: 'results-heading',
+    children: [
+      { label: 'Sensitivity Analysis - A comparison of models', targetId: 'sensitivity-analysis-results' },
+      { label: 'Least-Cost Pathway', targetId: 'least-cost-pathway-results' },
+      { label: 'Data Limitations', targetId: 'data-limitations-results' },
+    ],
+  },
   { label: 'Conclusion', targetId: 'conclusion-heading' },
   { label: 'Sources', targetId: 'sources-heading' },
 ]
@@ -402,6 +436,7 @@ const sources = [
   'Trommsdorff, M., Kang, J., Reise, C., Schindele, S., Bopp, G., Ehmann, A., ... & Obergfell, T. (2021). Combining food and energy production: Design of an agrivoltaic system applied in arable and vegetable farming in Germany. Renewable and Sustainable Energy Reviews, 140, 110694.',
   'Ward, N., & Lewry, M. (2019). Saskatchewan | History, Population, Map, & Flag. In Encyclopædia Britannica. https://www.britannica.com/place/Saskatchewan',
   'Widmer, J., Christ, B., Grenz, J., & Norgrove, L. (2024). Agrivoltaics, a promising new tool for electricity and food production: A systematic review. Renewable and Sustainable Energy Reviews, 192, 114277.',
+  'Introduction image by Freepik. https://www.freepik.com/',
 ]
 
 const app = document.querySelector<HTMLDivElement>('#app')
@@ -421,7 +456,22 @@ if (app) {
             ${navItems
               .map(
                 (item) =>
-                  `<button type="button" class="toc-link" data-target="${item.targetId}">${item.label}</button>`,
+                  item.children?.length
+                    ? `
+                      <details class="toc-group">
+                        <summary class="toc-group-summary">${item.label}</summary>
+                        <div class="toc-sub-links">
+                          <button type="button" class="toc-link" data-target="${item.targetId}">${item.label} Overview</button>
+                          ${item.children
+                            .map(
+                              (child) =>
+                                `<button type="button" class="toc-link toc-sublink" data-target="${child.targetId}">${child.label}</button>`,
+                            )
+                            .join('')}
+                        </div>
+                      </details>
+                    `
+                    : `<button type="button" class="toc-link" data-target="${item.targetId}">${item.label}</button>`,
               )
               .join('')}
           </nav>
@@ -466,7 +516,7 @@ if (app) {
 
           <div class="intro-flow">
             <figure class="content-figure intro-figure">
-              <img class="figure-image figure-map" src="${heroFarmImage}" alt="Solar cell farm" />
+              <img class="figure-image figure-map" src="${introImage}" alt="Solar power station" />
             </figure>
 
             <div class="prose intro-prose">
@@ -506,7 +556,7 @@ if (app) {
                 (dataset) => `
                   <article class="dataset-row${dataset.title === 'Transmission Lines' ? ' dataset-row-focus' : ''}">
                     <div class="dataset-copy">
-                      <h3>${dataset.title}</h3>
+                      <h3 id="${toAnchorId(dataset.title)}">${dataset.title}</h3>
                       <div class="figure-placeholder dataset-image">
                         <img class="figure-image" src="${dataset.image}" alt="${dataset.title}" />
                       </div>
@@ -535,7 +585,7 @@ if (app) {
               <li>Data Analysis - Least Cost Pathway</li>
             </ol>
 
-            <h3>Research and Data Preparation</h3>
+            <h3 id="research-and-data-preparation">Research and Data Preparation</h3>
 
             <h4>Background research</h4>
             <p>
@@ -549,7 +599,7 @@ if (app) {
               about the various datasets used for this analysis and how they were obtained is detailed in the <a href="#sources-heading">data sources page</a>.
             </p>
 
-            <h4>Data Preparation</h4>
+            <h4 id="data-preparation">Data Preparation</h4>
             <p>
               Many of the collected datasets covered the entire extent of Canada. Thus, it was necessary to clip and
               extract the data by mask to narrow the data layers to only Saskatchewan.
@@ -591,7 +641,7 @@ if (app) {
               Saskatchewan.
             </p>
 
-            <h3>Data Analysis - Standard MCE</h3>
+            <h3 id="data-analysis-standard-mce">Data Analysis - Standard MCE</h3>
             <p>We performed the standard Multi-Criteria Evaluation methodology for this project.</p>
             <p>The factors used for our MCE are as follows:</p>
             <ul class="methodology-factors">
@@ -657,7 +707,7 @@ if (app) {
               </div>
             </details>
 
-            <h3>Sensitivity Analysis</h3>
+            <h3 id="sensitivity-analysis-methodology">Sensitivity Analysis</h3>
             <p>
               The final step to complete the MCE analysis was to perform a sensitivity analysis. In short, we created
               a separate model where the weights of the factors were set to be equal. This was done to visualize how
@@ -667,7 +717,7 @@ if (app) {
               The results of each model were overlaid on each other. The produced map can be found on the <a href="#results-heading">results page</a>.
             </p>
 
-            <h3>Data Analysis - Least Cost Pathway</h3>
+            <h3 id="data-analysis-least-cost-pathway">Data Analysis - Least Cost Pathway</h3>
             <p>
               We also wanted to map the least cost pathway from one of the viable areas we identified to a nearby
               transmission line. We decided to focus on this area selected by our weighted model, as it seemed to be
@@ -743,7 +793,7 @@ if (app) {
             </div>
 
             <div class="prose results-prose">
-              <h3>Sensitivity Analysis - A comparison of models</h3>
+              <h3 id="sensitivity-analysis-results">Sensitivity Analysis - A comparison of models</h3>
               <p>
                 Though there is some overlap, changing the weights significantly changed the selected areas. The
                 overlapping areas, however, are both already quite near transmission lines. This is highly likely due
@@ -764,7 +814,7 @@ if (app) {
                 subsequently selected areas may be completely different.
               </p>
 
-              <h3>Least-Cost Pathway</h3>
+              <h3 id="least-cost-pathway-results">Least-Cost Pathway</h3>
               <p>
                 The calculated path is overall relatively straight. The area surrounding the farm consists mostly of
                 cropland and roads, which we assigned the lowest weights to. Thus, the path was able to go straight
@@ -773,7 +823,7 @@ if (app) {
                 with high vegetation.
               </p>
 
-              <h3>Data Limitations</h3>
+              <h3 id="data-limitations-results">Data Limitations</h3>
               <p>
                 We made use of the most up-to-date versions of each dataset we gathered. However, it should be noted
                 that this means that some datasets are from different years. The photovoltaic potential map and land
