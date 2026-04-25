@@ -794,9 +794,9 @@ if (app) {
               More specifically, each model selected a total area of 6500 square kilometers, split into 10 areas each.
             </p>
             <p>
-              The following map showcases the 10 most suitable locations as selected by each MCE model. The yellow
-              sections indicate the areas selected by the weighted model. Likewise, the blue sections indicate areas
-              selected by the equal model. Lastly, the red sections are areas that both of the models selected.
+              The following map showcases the 10 most suitable locations as selected by each MCE model. The grey
+              sections indicate the areas selected by the weighted model. Likewise, the sandy brown sections indicate areas
+              selected by the equal model. Lastly, the yellow sections are areas that both of the models selected.
               Generally, the model selected areas towards the southern part of the province.
             </p>
           </div>
