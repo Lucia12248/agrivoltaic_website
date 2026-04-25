@@ -797,7 +797,7 @@ if (app) {
                 <iframe
                   class="results-map-embed"
                   title="ArcGIS Instant App"
-                  src="https://ubc.maps.arcgis.com/apps/instant/sidebar/index.html?appid=f6c8f244ac3442ecbced7b05c24b3892"
+                  src="https://ubc.maps.arcgis.com/apps/instant/sidebar/index.html?appid=5fc2dd0efd174966984461f2c19622c6"
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
                   allowfullscreen
