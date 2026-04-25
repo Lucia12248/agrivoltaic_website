@@ -495,6 +495,30 @@ h3 {
   text-align: left;
 }
 
+.results-map-figure {
+  margin: 0.9rem auto 0.75rem;
+  width: min(860px, 100%);
+}
+
+.results-map-placeholder {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+}
+
+.results-map-embed {
+  width: 100%;
+  height: 640px;
+  border: 0;
+}
+
+.results-map-caption {
+  margin-top: 0.55rem;
+  font-size: 0.96rem;
+  line-height: 1.45;
+  text-align: left;
+}
+
 .sources-section {
   background: var(--paper);
   margin-left: -0.75rem;
@@ -789,5 +813,9 @@ body[data-toc-open='true'] .toc-backdrop {
 
   .toc-link {
     font-size: 1.2rem;
+  }
+
+  .results-map-embed {
+    height: 480px;
   }
 }
